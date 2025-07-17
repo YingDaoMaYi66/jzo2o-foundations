@@ -15,6 +15,17 @@ import java.util.List;
 @SpringBootTest
 @Slf4j
 class IServeServiceTest {
+    @Resource
+    private IServeService service;
+    @Test
+    public void test_page() {
+        ServePageQueryReqDTO servePageQueryReqDTO = new ServePageQueryReqDTO();
+        servePageQueryReqDTO.setRegionId(1686303222843662337L);
+        servePageQueryReqDTO.setPageNo(1L);
+        servePageQueryReqDTO.setPageSize(3L);
+        PageResult<ServeResDTO> page = service.page(servePageQueryReqDTO);
+        Assert.notNull(page.getList(), "查询数据为空");
+    }
 //    @Resource
 //    private IServeService serveService;
 
