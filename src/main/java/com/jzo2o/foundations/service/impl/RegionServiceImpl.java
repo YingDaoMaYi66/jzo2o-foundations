@@ -161,6 +161,7 @@ public class RegionServiceImpl extends ServiceImpl<RegionMapper, Region> impleme
         }
         //如果需要启用区域，需要校验该区域下是否有上架的服务
         //todo
+        ;
 
         //更新启用状态
         LambdaUpdateWrapper<Region> updateWrapper = Wrappers.<Region>lambdaUpdate()

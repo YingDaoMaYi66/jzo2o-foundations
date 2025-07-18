@@ -26,6 +26,47 @@ class IServeServiceTest {
         PageResult<ServeResDTO> page = service.page(servePageQueryReqDTO);
         Assert.notNull(page.getList(), "查询数据为空");
     }
+
+    /**
+     * 删除区域服务测试
+     */
+    @Test
+    public void test_delete() {
+
+        Long id = 1L;
+        // 删除服务
+        service.delete(id);
+
+        // 验证服务已被删除
+        Exception exception = null;
+        try {
+            service.delete(id);
+        } catch (Exception ex) {
+            exception = ex;
+        }
+        Assert.notNull(exception, "服务未被删除或未抛出异常");
+    }
+    /**
+     * 区域服务下架测试
+     */
+    @Test
+    public void test_offSale() {
+        Long id = 1945780654021033986L; // 请根据实际存在的服务ID进行调整
+        // 先尝试下架
+        service.offSale(id);
+
+        // 再次下架应抛出异常
+        Exception exception = null;
+        try {
+            service.offSale(id);
+        } catch (Exception ex) {
+            exception = ex;
+        }
+        Assert.notNull(exception, "服务未被下架或未抛出异常");
+    }
+
+
+
 //    @Resource
 //    private IServeService serveService;
 
