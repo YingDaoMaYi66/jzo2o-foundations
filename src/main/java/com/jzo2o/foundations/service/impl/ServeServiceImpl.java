@@ -243,4 +243,34 @@ public class ServeServiceImpl extends ServiceImpl<ServeMapper, Serve> implements
             throw new ForbiddenOperationException("服务设置热门失败");
         }
     }
+
+    /**
+     * 根据区域ID和销售状态查询服务数量
+     * @param id 区域ID
+     * @param status 销售状态
+     * @return 服务数量
+     */
+    @Override
+    public int queryServeCountByRegionIdAndSaleStatus(Long id, int status) {
+        int count = lambdaQuery()
+                .eq(Serve::getRegionId, id)
+                .eq(Serve::getSaleStatus, status)
+                .count();
+        return count;
+    }
+
+    /**
+     * 根据服务项ID和销售状态查询服务数量
+     * @param id 服务项ID
+     * @param status 销售状态
+     * @return 服务数量
+     */
+    @Override
+    public int queryServeCountByServeItemIdAndSaleStatus(Long id, int status) {
+        int count = lambdaQuery()
+                .eq(Serve::getServeItemId, id)
+                .eq(Serve::getSaleStatus, status)
+                .count();
+        return count;
+    }
 }

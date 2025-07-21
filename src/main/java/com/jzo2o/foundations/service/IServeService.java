@@ -71,4 +71,22 @@ public interface IServeService extends IService<Serve> {
      * @param id 服务ID
      */
     void offHot(Long id);
+
+
+    /**
+     * 根据区域ID和销售状态查询服务数量
+     * @param id 区域ID
+     * @param status 销售状态
+     * @return 服务数量
+     */
+    int queryServeCountByRegionIdAndSaleStatus(Long id, int status);
+
+
+    /**
+     * 根据服务项ID和销售状态查询服务数量
+     * @param id 服务项ID
+     * @param status 销售状态
+     * @return 服务数量
+     */
+    int queryServeCountByServeItemIdAndSaleStatus(Long id, int status);
 }
