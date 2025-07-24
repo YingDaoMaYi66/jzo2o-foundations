@@ -48,10 +48,8 @@ public class ServeItemServiceImpl extends ServiceImpl<ServeItemMapper, ServeItem
 
     @Resource
     private ServeTypeMapper serveTypeMapper;
-
     @Resource
     private IServeService serveService;
-
     /**
      * 服务项新增
      *
@@ -166,10 +164,9 @@ public class ServeItemServiceImpl extends ServiceImpl<ServeItemMapper, ServeItem
         }
 
         //有区域在使用该服务将无法禁用（存在关联的区域服务且状态为上架表示有区域在使用该服务项）
-        //todo
         int count = serveService.queryServeCountByServeItemIdAndSaleStatus(id, FoundationStatusEnum.ENABLE.getStatus());
-        if (count>0){
-            throw new ForbiddenOperationException("存在区域服务在使用该服务项，无法禁用");
+        if (count > 0) {
+            throw new ForbiddenOperationException("该服务有区域正在使用，无法进行禁用,请先将区域内的服务下架。");
         }
 
         //更新禁用状态
