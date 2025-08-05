@@ -1,6 +1,7 @@
 package com.jzo2o.foundations.service;
 
 import com.jzo2o.common.model.PageResult;
+import com.jzo2o.foundations.model.domain.Serve;
 import com.jzo2o.foundations.model.dto.request.ServePageQueryReqDTO;
 import com.jzo2o.foundations.model.dto.response.*;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,12 @@ import java.util.List;
 class IServeServiceTest {
     @Resource
     private IServeService serveService;
+
+    @Test
+    public void test_queryServeByIdCache(){
+        Serve serve = serveService.queryServeByIdCache(1693815623867506689L);
+        Assert.notNull(serve,"服务为空");
+    }
 
     //分页测试
     @Test

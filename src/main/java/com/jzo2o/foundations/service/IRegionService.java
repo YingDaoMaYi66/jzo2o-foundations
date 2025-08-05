@@ -78,4 +78,10 @@ public interface IRegionService extends IService<Region> {
      */
     List<RegionSimpleResDTO> queryActiveRegionListCache();
 
+    /**
+     * 凌晨缓冲区服务区域列表
+     */
+
+    List<RegionSimpleResDTO> ServeTypeListByCityCodeCache();
+
 }
